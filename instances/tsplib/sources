@@ -1,0 +1,6 @@
+all_tsp : http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp/
+vlsi : http://www.math.uwaterloo.ca/tsp/data/index.html
+
+# Instances difficiles à résoudre 
+tnm : http://akira.ruc.dk/~keld/research/LKH/
+Papier descriptif : https://arxiv.org/pdf/1808.02859.pdf
