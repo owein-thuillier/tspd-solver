@@ -30,7 +30,7 @@ function onclick(event, listePoints, fig, ax)
     fig.canvas.draw()
 end
 
-function instanceSurMesure()
+function instanceSurMesure(bool=true)
     listePoints = []
     fig = plt.figure()
     ax = fig.add_subplot(111) 
@@ -68,14 +68,21 @@ function instanceSurMesure()
     solution = Solution([], [], 0, 0) # Solution du problème (= ordre de visite camion + opérations drone + temps parcours + temps attente total)
     instance = Instance(vitesseCamion, vitesseDrone, nbPoints, listePoints, D, solution, 0)
 
-    choix = choixBinaire("\n --> Souhaitez-vous enregistrer l'instance (o/n) ? ")
+    if bool == true
+        choix = choixBinaire("\n --> Souhaitez-vous enregistrer l'instance (o/n) ? ")
+    else
+        choix = "o"
+    end
+
     if choix == "o"
         print(" --> Nom de l'instance : ")
         nom = readline()
         enregistrerInstance(instance, nom)
     end
-
-    return instance
+    
+    if bool == true
+        return instance
+    end
 end
 
 
