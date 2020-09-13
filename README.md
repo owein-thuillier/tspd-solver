@@ -6,7 +6,7 @@ Ce solveur TSP-D se base essentiellement sur les algorithmes de programmation dy
 
 Notre contribution s'articule donc autour d'une extension des algorithmes A1 et A2 afin d'introduire le cas bi-objectif, ceci via l'introduction d'un objectif secondaire : le temps d'attente total (z2) lié aux différentes opérations impliquant une livraison par drone. Nous noterons respectivement ces nouveaux algorithmes 2A1 et 2A2. Ces deux algorithmes ont été présentés lors de la conférence RAMOO'2020 [3].
 
-Par ailleurs, de multiples instances ont été mises à disposition et sont compatibles avec les différents algorithmes mentionnés ci-dessus.
+Par ailleurs, de multiples instances ont été mises à disposition et sont compatibles avec les différents algorithmes mentionnés ci-dessus (dont un générateur interactif d'instances sur mesure)
 
 
 ## Utilisation
@@ -76,7 +76,7 @@ Pour lancer le programme secondaire, il suffit d'utiliser la commande `include("
   
 Il s'agit d'un mode interactif de résolution du TSP-D via les algorithmes A1 (AEP) et A2 (EP) issus de la littérature.
 
-### Création d'instance sur mesure (notre format)
+### Création d'instances sur mesure (notre format)
 
 Pour lancer le programme de création d'instances sur mesure, il suffit d'utiliser la commande `include("main_creation_instance.jl")` depuis l'interpréteur Julia et de cliquer sur la figure à de multiples reprises afin de placer les différents points. Le premier point étant le dépôt, par défaut. 
 
