@@ -172,10 +172,13 @@ function affichageGraphique(instance, fig=plt.figure(), animation=false, col="bl
         title(L"TSP solution - Lin-Kernighan ($speed_{t} = $"*string(instance.vitesseCamion)*L", $speed_{d} = $"*string(instance.vitesseDrone)*")")
     elseif instance.codeResolution == 3
         #title(L"Solution admissible TSP-D - AEP ($vitesse_{t} = $"*string(instance.vitesseCamion)*L", $vitesse_{d} = $"*string(instance.vitesseDrone)*")")
-        title(L"TSP-D solution - AEP ($speed_{t} = $"*string(instance.vitesseCamion)*L", $speed_{d} = $"*string(instance.vitesseDrone)*")")
+        title(L"TSP-D solution - A1 ($speed_{t} = $"*string(instance.vitesseCamion)*L", $speed_{d} = $"*string(instance.vitesseDrone)*")")
     elseif instance.codeResolution == 4
         #title(L"Solution admissible TSP-D - EP ($vitesse{t} = $"*string(instance.vitesseCamion)*L", $vitesse{d} = $"*string(instance.vitesseDrone)*")")
-        title(L"TSP-D solution - EP ($speed_{t} = $"*string(instance.vitesseCamion)*L", $speed_{d} = $"*string(instance.vitesseDrone)*")")
+        title(L"TSP-D solution - A2 ($speed_{t} = $"*string(instance.vitesseCamion)*L", $speed_{d} = $"*string(instance.vitesseDrone)*")")
+    elseif instance.codeResolution == 5
+        #title(L"Solution admissible TSP-D - EP ($vitesse{t} = $"*string(instance.vitesseCamion)*L", $vitesse{d} = $"*string(instance.vitesseDrone)*")")
+        title(L"TSP-D solution - 2A1 ($speed_{t} = $"*string(instance.vitesseCamion)*L", $speed_{d} = $"*string(instance.vitesseDrone)*")")
     end
     xlabel(L"x ($z_1 = $"*string(round(instance.solution.tempsParcours, digits=2))*L", $z_2 = $"*string(round(instance.solution.tempsAttente, digits=2))*")")
     ylabel("y")

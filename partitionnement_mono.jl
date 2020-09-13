@@ -27,6 +27,7 @@ function tempsOperation(instance, i,j,k)
         ri = solutionTSP[i]
         rj = solutionTSP[j]
         distanceCamion = instance.D[ri,rj]
+        tempsAttente = 0.0   
     else
         ri = solutionTSP[i]
         rj = solutionTSP[j]
@@ -46,9 +47,9 @@ function tempsOperation(instance, i,j,k)
             r2 = solutionTSP[l+1]
             distanceCamion += instance.D[r1,r2]
         end
+        tempsAttente = abs((distanceCamion/instance.vitesseCamion) - (distanceDrone/instance.vitesseDrone))
     end
     tempsParcours = max(distanceCamion/instance.vitesseCamion, distanceDrone/instance.vitesseDrone)
-    tempsAttente = abs((distanceCamion/instance.vitesseCamion) - (distanceDrone/instance.vitesseDrone))
     return tempsParcours, tempsAttente
     #println(" Distance parcourue par le drone : $distanceDrone")
     #println(" Distance parcourue par le camion : $distanceCamion")
@@ -101,6 +102,7 @@ function AEP(instance)
     V[1] = 0
     A[1] = 0
     P[1] = -1
+
     for i in 2:length(V)
         minTemps = Inf32
         attenteAssociee = Inf32
@@ -186,7 +188,7 @@ function tempsOperationEP(instance, i,j,k)
             rl = solutionTSP[l]
             distanceDrone += 2 * instance.D[ri,rl]
         end
-        tempsParcours = (distanceCamion/instance.vitesseCamion) +  (distanceDrone/instance.vitesseDrone)
+        tempsParcours = (distanceCamion/instance.vitesseCamion) + (distanceDrone/instance.vitesseDrone)
         tempsAttente = (distanceDrone/instance.vitesseDrone) # Le camion doit attendre que le drone termine la livraison
     elseif k == -3
         minTempsParcours = Inf32 

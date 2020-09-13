@@ -55,8 +55,8 @@ function resolutionConcorde(instance)
     asciiArtAvion()
     versTSPLIB(instance) # On convertit l'instance courante vers le format TSPLIB (compatible Concorde)
 
-    println("\n Type de résolution souhaitée : ")
-    println(" ------------------------------")
+    println("\n Choix du type de résolution (TSP) :")
+    println(" -----------------------------------")
     println("    --> 1) Exacte")
     println("    --> 2) Approchée : Lin-Kernighan (à personnaliser)")
     println("    --> 3) Approchée : Lin-Kernighan (défaut)")
@@ -122,5 +122,31 @@ function asciiArtAvion()
     println("              |____/__  ")
     println("")
 end
+
+
+########## Fonctions rapides (sans affichage ni lecture utilisateur) ##########
+
+
+function concordeFast(instance) # 0 verbosité
+    versTSPLIB(instance)
+    run(pipeline(`./concorde/concorde -o temp/res temp/instance_TSPLIB`, stdout=devnull, stderr=devnull))
+    ordreVisite = lectureSolutionCONCORDE()
+    instance.codeResolution = 1
+    run(`./clean.sh`) # On supprime les fichiers résiduels
+    solution = Solution(ordreVisite, [], coutTour(ordreVisite, instance), 0)
+    instance.solution = solution
+end
+
+function lkhFast(instance) # 0 verbosité
+    versTSPLIB(instance)
+    run(pipeline(`./concorde/linkern -o temp/res temp/instance_TSPLIB`, stdout=devnull, stderr=devnull))
+    ordreVisite = lectureSolutionLINKERN()
+    instance.codeResolution = 2
+    run(pipeline(`./clean.sh`, stderr=devnull)) # On supprime les fichiers résiduels
+    solution = Solution(ordreVisite, [], coutTour(ordreVisite, instance), 0)
+    instance.solution = solution
+end
+
+
 
 

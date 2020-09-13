@@ -7,6 +7,7 @@ include("parser.jl")
 include("instance_sur_mesure.jl")
 include("concorde.jl")
 include("partitionnement_mono.jl")
+include("partitionnement_bi.jl")
 
 function main()
     continuer = "o"
@@ -15,8 +16,9 @@ function main()
         reset()
 
         # Chargement instance
-        #instance = test()
         instance = choixInstance()
+        instance.vitesseCamion = 1
+        instance.vitesseDrone = 3
         caracteristiquesInstance(instance)
         graphique = initGraphique(instance)
 
@@ -26,7 +28,16 @@ function main()
         majGraphique(instance, graphique)
 
         # Choix mono/bi
-        partitionnementMonoObjectif(instance)
+        println("\n Choix du type de résolution (TSP-D) :")
+        println(" -------------------------------------")
+        println("  1) Mono-objectif")
+        println("  2) Bi-objectif")
+        choix = choixListe(2)
+        if choix == "1"       
+            partitionnementMonoObjectif(instance)
+        elseif choix == "2"
+            partitionnementBiObjectif(instance)
+        end
         affichageSolution(instance) 
         majGraphique(instance, graphique)
 
@@ -36,5 +47,14 @@ function main()
      close()
 end
 
+
 main()
+
+
+
+
+
+
+
+
 

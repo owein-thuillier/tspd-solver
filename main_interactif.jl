@@ -42,7 +42,7 @@ function mode_interactif(instance, graphique) # Possible de replacer les points
 end
 
 function manuel()
-    println("\n========== Mode interactif ==========")
+    println("\n========== Mode interactif - Manuel ==========")
     println("\n Aide :")
     println(" ------")
     println("\n h : Afficher le manuel à nouveau")
@@ -52,9 +52,8 @@ function manuel()
     println(" r : Reset")
     println(" t : TSP via CONCORDE")
     println(" y : TSP via LKH")
-    println(" u : TSP-D via AEP")
-    println(" i : TSP-D via EP")
-    println("\n h : Afficher le manuel à nouveau")
+    println(" u : TSP-D via A1 (AEP)")
+    println(" i : TSP-D via A2 (EP)")
     println("\n Enregistrer l'instance (notre format) :")
     println(" ---------------------------------------") 
     println("\n b : Enregistre l'instance dans le dossier \"instances/nous/bibliotheque_autres/\"")
@@ -206,6 +205,8 @@ function on_key_2(event, instance, graphique)
         if instance.codeResolution != 0
             affichageSolution(instance)
         end
+    elseif event.key == "h"
+        manuel()
     end
 end
 
@@ -229,26 +230,5 @@ function saveInstance(instance, graphique)
     return cid
 end
 
-########## Résolution rapide ########## 
-
-function concordeFast(instance) # 0 verbosité
-    versTSPLIB(instance)
-    run(pipeline(`./concorde/concorde -o temp/res temp/instance_TSPLIB`, stdout=devnull, stderr=devnull))
-    ordreVisite = lectureSolutionCONCORDE()
-    instance.codeResolution = 1
-    run(`./clean.sh`) # On supprime les fichiers résiduels
-    solution = Solution(ordreVisite, [], coutTour(ordreVisite, instance), 0)
-    instance.solution = solution
-end
-
-function lkhFast(instance) # 0 verbosité
-    versTSPLIB(instance)
-    run(pipeline(`./concorde/linkern -o temp/res temp/instance_TSPLIB`, stdout=devnull, stderr=devnull))
-    ordreVisite = lectureSolutionLINKERN()
-    instance.codeResolution = 2
-    run(pipeline(`./clean.sh`, stderr=devnull)) # On supprime les fichiers résiduels
-    solution = Solution(ordreVisite, [], coutTour(ordreVisite, instance), 0)
-    instance.solution = solution
-end
 
 main()

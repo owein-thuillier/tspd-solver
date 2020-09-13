@@ -208,7 +208,7 @@ function tableauBis(f, listeInstances, typeInstance, vitesseCamion, vitesseDrone
     l *= "\n\\cline{2-13}"
     l *= "\n\\multicolumn{1}{c|}{} & \\multicolumn{12}{|c|}{\\large{Computational Results - Overview ("*string(trunc(Int, i))*"/"*string(trunc(Int, nbTableaux))*")}} \\\\"
     l *= "\n\\cline{2-13}"
-    l *= "\n\\multicolumn{1}{c|}{} & \\multicolumn{6}{|c|}{\\textbf{TSP via Concorde}} & \\multicolumn{6}{|c|}{\\textbf{TSP via LKH}}  \\\\"
+    l *= "\n\\multicolumn{1}{c|}{} & \\multicolumn{6}{|c|}{\\textbf{TSP via Concorde}} & \\multicolumn{6}{|c|}{\\textbf{TSP via Linkern}}  \\\\"
     l *= "\n\\cline{2-13}"
     l *= "\n\\multicolumn{1}{c|}{} & \\multicolumn{3}{|c}{\\textbf{AEP (A1)}} & \\multicolumn{3}{|c|}{\\textbf{EP (A2)}} & \\multicolumn{3}{|c}{\\textbf{AEP (A1)}} & \\multicolumn{3}{|c|}{\\textbf{EP (A2)}} \\\\"
     l *= "\n\\hline"
@@ -266,87 +266,8 @@ function tableauBis(f, listeInstances, typeInstance, vitesseCamion, vitesseDrone
 end
 
 
-function parserAgatzBis(nomInstance) # 0 verbosité
-    # Parsing de l'instance
-    f = open("experimentations/"*nomInstance)
-    lignes = readlines(f) # Lecture de l'instance choisie
-    vitesseCamion = parse(Float64, lignes[2])
-    vitesseDrone = parse(Float64, lignes[4])
-    nbPoints = parse(Int, lignes[6])
-    listePoints = Vector{Point}(undef, nbPoints)
-    xDepot, yDepot = parse.(Float64, split(lignes[8])[1:2])
-    idDepot = "1"
-    depot = Point(xDepot, yDepot, idDepot)
-    listePoints[1] = depot
-    compteur = 2
-    for i in 10:length(lignes) # Pour tous les autres points
-        xPoint, yPoint = parse.(Float64, split(lignes[i])[1:2])
-        idPoint = string(compteur)
-        point = Point(xPoint, yPoint, idPoint)
-        listePoints[compteur] = point
-        compteur += 1
-    end
-    close(f)
-    D = creationDistancier(nbPoints, listePoints)
-
-    # Création de l'instance
-    solution = Solution([], [], 0, 0) # Solution vide pour le moment
-    instance = Instance(vitesseCamion, vitesseDrone, nbPoints, listePoints, D, solution, 0)
-    return instance
-end
-
-function parserNousBis(nomInstance) # 0 verbosité
-    # Parsing de l'instance
-    f = open("experimentations/"*nomInstance)
-    lignes = readlines(f) # Lecture de l'instance choisie
-    nbPoints = parse(Int64, lignes[1])
-    listePoints = Vector{Point}(undef, nbPoints)
-    vitesseCamion, vitesseDrone = parse.(Float64, split(lignes[2]))
-    compteur = 1
-    for i in 3:length(lignes)
-        xPoint, yPoint = parse.(Float64, split(lignes[i])[1:2])
-        idPoint = string(compteur)
-        point = Point(xPoint, yPoint, idPoint)
-        listePoints[compteur] = point
-        compteur += 1        
-    end
-    close(f)
-    D = creationDistancier(nbPoints, listePoints)
-
-    # Création de l'instance
-    solution = Solution([], [], 0, 0) # Solution vide pour le moment
-    instance = Instance(vitesseCamion, vitesseDrone, nbPoints, listePoints, D, solution, 0)
-    return instance
-end
-
-function parserTsplibBis(nomInstance)
-    # Parsing de l'instance
-    f = open("experimentations/"*nomInstance)
-    lignes = readlines(f)
-    i = 1  
-    while lignes[i] != "NODE_COORD_SECTION" 
-        # On cherche le début des coordonées
-        i += 1
-    end
-    nbPoints = length(lignes) - (i + 1) # Il y a i lignes au début + une ligne avec le EOF à la fin
-
-    listePoints = Vector{Point}(undef, nbPoints)
-    compteur = 1
-    for i in (i+1):length(lignes)-1
-        xClient, yClient = parse.(Float64, split(lignes[i])[2:3])
-        pointClient = Point(xClient, yClient, string(compteur))
-        listePoints[compteur] = pointClient
-        compteur += 1
-    end
-    close(f)
-    D = creationDistancier(nbPoints, listePoints)
 
 
-    # Création de l'instance
-    solution = Solution([], [], 0, 0) # Solution vide pour le moment
-    instance = Instance(1, 3, nbPoints, listePoints, D, solution, 0)
-    return instance
-end
 
 
 ########## Poikonen ##########
@@ -528,7 +449,7 @@ function tableauPoikoBis(f, vitesseCamion, vitesseDrone, cpt, i, nbTableaux, bor
     l *= "\n\\cline{2-13}"
     l *= "\n\\multicolumn{1}{c|}{} & \\multicolumn{12}{|c|}{\\large{Computational Results - Overview ("*string(trunc(Int, i))*"/"*string(trunc(Int, nbTableaux))*")}} \\\\"
     l *= "\n\\cline{2-13}"
-    l *= "\n\\multicolumn{1}{c|}{} & \\multicolumn{6}{|c|}{\\textbf{TSP via Concorde}} & \\multicolumn{6}{|c|}{\\textbf{TSP via LKH}}  \\\\"
+    l *= "\n\\multicolumn{1}{c|}{} & \\multicolumn{6}{|c|}{\\textbf{TSP via Concorde}} & \\multicolumn{6}{|c|}{\\textbf{TSP via Linkern}}  \\\\"
     l *= "\n\\cline{2-13}"
     l *= "\n\\multicolumn{1}{c|}{} & \\multicolumn{3}{|c}{\\textbf{AEP (A1)}} & \\multicolumn{3}{|c|}{\\textbf{EP (A2)}} & \\multicolumn{3}{|c}{\\textbf{AEP (A1)}} & \\multicolumn{3}{|c|}{\\textbf{EP (A2)}} \\\\"
     l *= "\n\\hline"
@@ -575,50 +496,6 @@ function tableauPoikoBis(f, vitesseCamion, vitesseDrone, cpt, i, nbTableaux, bor
     l = "\n\\end{tabular}}"
     l *= "\n\\end{table}"
     write(f, l)    
-end
-
-function parserPoikoBis(lignes, cpt)
-    # Parsing de l'instance
-    temp = lignes[cpt,2]
-    temp = replace(temp, '['=>"")
-    temp = split(temp[1:end-2], "],")
-    nbPoints = length(temp)-1
-    listePoints = Vector{Point}(undef, nbPoints)
-    for i in 1:length(temp)-1
-        couple = split(temp[i], ",")
-        xPoint, yPoint = parse(Float64, couple[1]), parse(Float64, couple[2]) 
-        idPoint = string(i)
-        point = Point(xPoint, yPoint, idPoint)
-        listePoints[i] = point
-    end
-    D = creationDistancier(nbPoints, listePoints)
-
-    # Création de l'instance
-    solution = Solution([], [], 0, 0) # Solution vide pour le moment
-    instance = Instance(1, 3, nbPoints, listePoints, D, solution, 0)
-    return instance
-end
-
-########## Concorde Fast ##########
-
-function concordeFast(instance) # 0 verbosité
-    versTSPLIB(instance)
-    run(pipeline(`./concorde/concorde -o temp/res temp/instance_TSPLIB`, stdout=devnull, stderr=devnull))
-    ordreVisite = lectureSolutionCONCORDE()
-    instance.codeResolution = 1
-    run(`./clean.sh`) # On supprime les fichiers résiduels
-    solution = Solution(ordreVisite, [], coutTour(ordreVisite, instance), 0)
-    instance.solution = solution
-end
-
-function lkhFast(instance) # 0 verbosité
-    versTSPLIB(instance)
-    run(pipeline(`./concorde/linkern -o temp/res temp/instance_TSPLIB`, stdout=devnull, stderr=devnull))
-    ordreVisite = lectureSolutionLINKERN()
-    instance.codeResolution = 2
-    run(pipeline(`./clean.sh`, stderr=devnull)) # On supprime les fichiers résiduels
-    solution = Solution(ordreVisite, [], coutTour(ordreVisite, instance), 0)
-    instance.solution = solution
 end
 
 mainExp()

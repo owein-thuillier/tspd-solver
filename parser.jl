@@ -28,7 +28,7 @@ end
 
 function test()
     # Parsing de l'instance
-    f = open("instances/agatz/base/doublecenter-51-n10.txt")
+    f = open("instances/agatz/base/doublecenter-53-n10.txt")
     lignes = readlines(f) # Lecture de l'instance choisie
     vitesseCamion = parse(Float64, lignes[2])
     vitesseDrone = parse(Float64, lignes[4])
@@ -51,7 +51,7 @@ function test()
 
     # Création de l'instance
     solution = Solution([], [], 0, 0) # Solution vide pour le moment
-    instance = Instance(vitesseCamion, vitesseDrone, nbPoints, listePoints, D, solution, 0)
+    instance = Instance(1, 0.5, nbPoints, listePoints, D, solution, 0)
     return instance
 end
 
@@ -243,6 +243,115 @@ function parserTSPLIB(librairie)
     # Création de l'instance
     solution = Solution([], [], 0, 0) # Solution vide pour le moment
     instance = Instance(vitesseCamion, vitesseDrone, nbPoints, listePoints, D, solution, 0)
+    return instance
+end
+
+
+
+########## Parser rapides (non verbeux) pour faire des expérimentations ##########
+
+function parserNousBis(nomInstance) # 0 verbosité
+    # Parsing de l'instance
+    f = open("experimentations/"*nomInstance)
+    lignes = readlines(f) # Lecture de l'instance choisie
+    nbPoints = parse(Int64, lignes[1])
+    listePoints = Vector{Point}(undef, nbPoints)
+    vitesseCamion, vitesseDrone = parse.(Float64, split(lignes[2]))
+    compteur = 1
+    for i in 3:length(lignes)
+        xPoint, yPoint = parse.(Float64, split(lignes[i])[1:2])
+        idPoint = string(compteur)
+        point = Point(xPoint, yPoint, idPoint)
+        listePoints[compteur] = point
+        compteur += 1        
+    end
+    close(f)
+    D = creationDistancier(nbPoints, listePoints)
+
+    # Création de l'instance
+    solution = Solution([], [], 0, 0) # Solution vide pour le moment
+    instance = Instance(vitesseCamion, vitesseDrone, nbPoints, listePoints, D, solution, 0)
+    return instance
+end
+
+
+function parserAgatzBis(nomInstance) # 0 verbosité
+    # Parsing de l'instance
+    f = open("experimentations/"*nomInstance)
+    lignes = readlines(f) # Lecture de l'instance choisie
+    vitesseCamion = parse(Float64, lignes[2])
+    vitesseDrone = parse(Float64, lignes[4])
+    nbPoints = parse(Int, lignes[6])
+    listePoints = Vector{Point}(undef, nbPoints)
+    xDepot, yDepot = parse.(Float64, split(lignes[8])[1:2])
+    idDepot = "1"
+    depot = Point(xDepot, yDepot, idDepot)
+    listePoints[1] = depot
+    compteur = 2
+    for i in 10:length(lignes) # Pour tous les autres points
+        xPoint, yPoint = parse.(Float64, split(lignes[i])[1:2])
+        idPoint = string(compteur)
+        point = Point(xPoint, yPoint, idPoint)
+        listePoints[compteur] = point
+        compteur += 1
+    end
+    close(f)
+    D = creationDistancier(nbPoints, listePoints)
+
+    # Création de l'instance
+    solution = Solution([], [], 0, 0) # Solution vide pour le moment
+    instance = Instance(vitesseCamion, vitesseDrone, nbPoints, listePoints, D, solution, 0)
+    return instance
+end
+
+function parserTsplibBis(nomInstance)
+    # Parsing de l'instance
+    f = open("experimentations/"*nomInstance)
+    lignes = readlines(f)
+    i = 1  
+    while lignes[i] != "NODE_COORD_SECTION" 
+        # On cherche le début des coordonées
+        i += 1
+    end
+    nbPoints = length(lignes) - (i + 1) # Il y a i lignes au début + une ligne avec le EOF à la fin
+
+    listePoints = Vector{Point}(undef, nbPoints)
+    compteur = 1
+    for i in (i+1):length(lignes)-1
+        xClient, yClient = parse.(Float64, split(lignes[i])[2:3])
+        pointClient = Point(xClient, yClient, string(compteur))
+        listePoints[compteur] = pointClient
+        compteur += 1
+    end
+    close(f)
+    D = creationDistancier(nbPoints, listePoints)
+
+
+    # Création de l'instance
+    solution = Solution([], [], 0, 0) # Solution vide pour le moment
+    instance = Instance(1, 3, nbPoints, listePoints, D, solution, 0)
+    return instance
+end
+
+function parserPoikoBis(lignes, cpt)
+    # Parsing de l'instance
+    temp = lignes[cpt,2]
+    temp = replace(temp, '['=>"")
+    temp = split(temp[1:end-2], "],")
+    nbPoints = length(temp)-1
+    listePoints = Vector{Point}(undef, nbPoints)
+    for i in 1:length(temp)-1
+        couple = split(temp[i], ",")
+        xPoint, yPoint = parse(Float64, couple[1]), parse(Float64, couple[2]) 
+        idPoint = string(i)
+        point = Point(xPoint, yPoint, idPoint)
+        listePoints[i] = point
+    end
+    D = creationDistancier(nbPoints, listePoints)
+
+    # Création de l'instance
+    solution = Solution([], [], 0, 0) # Solution vide pour le moment
+    instance = Instance(1, 3, nbPoints, listePoints, D, solution, 0)
     return instance
 end
 

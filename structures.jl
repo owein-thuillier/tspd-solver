@@ -25,4 +25,5 @@ mutable struct Instance
     # 2 = TSP : solution approchée LK
     # 3 = TSP-D : AEP mono-objectif
     # 4 = TSP-D : EP mono-objectif
+    # 5 = TSP-D : AEP bi-objectif
 end
