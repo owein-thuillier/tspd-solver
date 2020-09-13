@@ -1,6 +1,6 @@
 # TSP-D SOLVER
 
-![logo](https://github.com/thuillierowein/tspd-solver/blob/master/logo/Logo%2B.png)
+![logo](https://github.com/thuillierowein/tspd-solver/blob/master/images/logo/Logo%2B.png)
 
 Ce solveur TSP-D se base essentiellement sur les algorithmes de programmation dynamique A1 (AEP) et A2 (EP) issus respectivement des articles de Agatz et al. [1] et de Poikonen et al. [2]. Articles traitant exclusivement du cas mono-objectif et visant à minimiser la durée totale de parcours (z1).
 
@@ -28,11 +28,20 @@ Ici, il s'agit de choisir une instance parmi les bibliothèques suivantes :
 
 Note : Il est également possible de créer une instance sur mesure de manière interactive.
 
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixBibliotheque.png)
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixInstance.png)
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/caracteristiquesInstance.png)
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique1.png)
+
 #### Phase 2 : Résolution du TSP
 
 Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pour résoudre le TSP :
  - Résolution exacte : Concorde 
  - Résolution approchée : Linkern (Lin-Kernighan) 
+ 
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSP.png)
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/detailSolutionTSP.png)
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique2.png)
 
 #### Phase 3 : Résolution du TSP-D
 
@@ -44,6 +53,9 @@ Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pou
   - 2A1 
   - 2A2 (en cours...)
   
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSPD.png)
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/detailSolutionTSPD.png)
+(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique3.png)
  
 ### Programme secondaire (mode interactif)
 
