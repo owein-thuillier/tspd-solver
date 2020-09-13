@@ -26,9 +26,9 @@ Ici, il s'agit de choisir une instance parmi les bibliothèques suivantes :
 - TSPLIB : vlsi
 - TSPLIB : tnm
 
-Note : Il est également possible de créer une instance sur mesure de manière interactive.
+Note : Il est également possible de créer une instance sur mesure de manière interactive (voir section correspondante).
 
-##### Exemple :
+##### Exemple 
 
 ![choixBibliotheque](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixBibliotheque.png)
 
@@ -44,7 +44,7 @@ Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pou
  - Résolution exacte : Concorde 
  - Résolution approchée : Linkern (Lin-Kernighan) 
  
- ##### Exemple :
+ ##### Exemple 
  
 ![resolutionTSP](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSP.png)
 
@@ -62,7 +62,7 @@ Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pou
   - 2A1 
   - 2A2 (en cours...)
   
- ##### Exemple :
+ ##### Exemple 
   
 ![resolutionTSPD](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSPD.png)
 
@@ -75,6 +75,20 @@ Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pou
 Pour lancer le programme secondaire, il suffit d'utiliser la commande `include("main_interactif.jl")` depuis l'interpréteur Julia et de suivre les différentes instructions.
   
 Il s'agit d'un mode interactif de résolution du TSP-D via les algorithmes A1 (AEP) et A2 (EP) issus de la littérature.
+
+### Création d'instance sur mesure (notre format)
+
+Pour lancer le programme de création d'instances sur mesure, il suffit d'utiliser la commande `include("main_creation_instance.jl")` depuis l'interpréteur Julia et de cliquer sur la figure à de multiples reprises afin de placer les différents points. Le premier point étant le dépôt, par défaut. 
+
+Une fois les points placés, l'utilisateur est invité à appuyer sur la touche "Entrée" depuis la console afin de valider son choix. Il lui sera alors demandé d'indiquer une vitesse pour le drone et pour le camion, avant de donner un nom à l'instance nouvellement créée. 
+
+Celle-ci sera disponible dans le dossier "instances/nous/bibliotheque_autres/" sous le nom indiqué. Elle sera donc utilisable directement depuis les programmes mentionnés ci-dessus.
+
+Note : Il est possible de créer une instance sur mesure directement depuis l'un des deux programmes principaux ci-dessus, au moment du choix de l'instance.
+
+#### Exemple 
+
+
 
 ## Références 
 
