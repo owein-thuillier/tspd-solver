@@ -53,7 +53,9 @@ Il s'agit d'un mode interactif de résolution du TSP-D via les algorithmes A1 (A
 ## Références 
 
 [1] Niels Agatz, Paul Bouman, and Marie Schmidt,Optimizationapproaches for the traveling salesman problem with drone,Transportation Science52(2018), no. 4, 965–981.
+
 [2] Stefan Poikonen, Bruce Golden, and Edward A. Wasil,Abranch-and-bound approach to the traveling salesman problem with adrone, INFORMS Journal on Computing31(2019), no. 2, 335–346.
+
 [3] Thuillier Owein, Le Colleter Théo, Gandibleux Xavier (2020, September 17). Bi-Objective Traveling Salesman Problemwith Drone (TSP-D). RAMOO’2020: 7th International Workshop on Recent Advances in Multi-Objective Optimization, Johannes Kepler University Linz, Austria. https://moo.univie.ac.at/ramoo-2020-program/
 
 
