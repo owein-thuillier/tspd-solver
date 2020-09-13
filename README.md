@@ -28,6 +28,8 @@ Ici, il s'agit de choisir une instance parmi les bibliothèques suivantes :
 
 Note : Il est également possible de créer une instance sur mesure de manière interactive.
 
+##### Exemple :
+
 ![choixBibliotheque](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixBibliotheque.png)
 
 ![choixInstance](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixInstance.png)
@@ -41,6 +43,8 @@ Note : Il est également possible de créer une instance sur mesure de manière 
 Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pour résoudre le TSP :
  - Résolution exacte : Concorde 
  - Résolution approchée : Linkern (Lin-Kernighan) 
+ 
+ ##### Exemple :
  
 ![resolutionTSP](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSP.png)
 
@@ -57,6 +61,8 @@ Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pou
 - Bi-objectif
   - 2A1 
   - 2A2 (en cours...)
+  
+ ##### Exemple :
   
 ![resolutionTSPD](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSPD.png)
 
