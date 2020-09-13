@@ -88,6 +88,16 @@ Note : Il est possible de créer une instance sur mesure directement depuis l'un
 
 #### Exemple 
 
+![iteration1](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple2/iteration1.png)
+
+![iteration2](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple2/iteration2.png)
+
+![iteration3](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple2/iteration3.png)
+
+![validation](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple2/validation.png)
+
+![instanceGeneree](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple2/instanceGeneree.png)
+
 
 
 ## Références 
