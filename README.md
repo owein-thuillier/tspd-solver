@@ -43,6 +43,7 @@ Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pou
 - Bi-objectif
   - 2A1 
   - 2A2 (en cours...)
+  
  
 ### Programme secondaire (mode interactif)
 
