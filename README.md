@@ -1,3 +1,5 @@
+***English version in progress...***
+
 # TSP-D SOLVER
 
 ![logo](https://github.com/thuillierowein/tspd-solver/blob/master/images/logo/Logo%2B.png)
