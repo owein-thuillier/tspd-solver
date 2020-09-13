@@ -28,10 +28,13 @@ Ici, il s'agit de choisir une instance parmi les bibliothèques suivantes :
 
 Note : Il est également possible de créer une instance sur mesure de manière interactive.
 
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixBibliotheque.png)
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixInstance.png)
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/caracteristiquesInstance.png)
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique1.png)
+![choixBibliotheque](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixBibliotheque.png)
+
+![choixInstance](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/choixInstance.png)
+
+![caracteristiquesInstance](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/caracteristiquesInstance.png)
+
+![graphique1](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique1.png)
 
 #### Phase 2 : Résolution du TSP
 
@@ -39,9 +42,11 @@ Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pou
  - Résolution exacte : Concorde 
  - Résolution approchée : Linkern (Lin-Kernighan) 
  
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSP.png)
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/detailSolutionTSP.png)
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique2.png)
+![resolutionTSP](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSP.png)
+
+![detailSolutionTSP](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/detailSolutionTSP.png)
+
+![graphique2](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique2.png)
 
 #### Phase 3 : Résolution du TSP-D
 
@@ -53,9 +58,11 @@ Une fois l'instance choisie, l'utilisateur est invité à choisir un solveur pou
   - 2A1 
   - 2A2 (en cours...)
   
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSPD.png)
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/detailSolutionTSPD.png)
-(https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique3.png)
+![resolutionTSPD](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/resolutionTSPD.png)
+
+![detailSolutionTSPD](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/detailSolutionTSPD.png)
+
+![graphique3](https://github.com/thuillierowein/tspd-solver/blob/master/images/exemple/graphique3.png)
  
 ### Programme secondaire (mode interactif)
 
