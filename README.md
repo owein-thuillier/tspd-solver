@@ -87,6 +87,6 @@ Il s'agit d'un mode interactif de résolution du TSP-D via les algorithmes A1 (A
 
 ## License
 
-Ce projet est sous licence ``exemple: WTFTPL`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
+Ce projet est sous licence ``MIT`` - voir le fichier [LICENSE](LICENSE) pour plus d'informations
 
 
