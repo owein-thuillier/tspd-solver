@@ -1,12 +1,12 @@
-***English version in progress...***
+***English version is coming...***
 
 # TSP-D SOLVER
 
 ![logo](https://github.com/thuillierowein/tspd-solver/blob/master/images/logo/Logo%2B.png)
 
-Ce solveur TSP-D se base essentiellement sur les algorithmes de programmation dynamique A1 (AEP) et A2 (EP) issus respectivement des articles de Agatz et al. [1] et de Poikonen et al. [2]. Articles traitant exclusivement du cas mono-objectif et visant à minimiser la durée totale de parcours (z1).
+Ce solveur TSP-D est construit sur les algorithmes de programmation dynamique A1 (AEP) et A2 (EP) issus respectivement des articles de Agatz et al. [1] et de Poikonen et al. [2], articles traitant exclusivement du cas mono-objectif et visant à minimiser la durée totale de parcours (z1).
 
-Notre contribution s'articule donc autour d'une extension des algorithmes A1 et A2 afin d'introduire le cas bi-objectif, ceci via l'introduction d'un objectif secondaire : le temps d'attente total (z2) lié aux différentes opérations impliquant une livraison par drone. Nous noterons respectivement ces nouveaux algorithmes 2A1 et 2A2. Ces deux algorithmes ont été présentés lors de la conférence RAMOO'2020 [3].
+Notre contribution s'articule donc autour d'une extension des algorithmes A1 et A2 afin d'introduire le cas bi-objectif, ceci via l'introduction d'un second objectif : le temps d'attente total (z2) lié aux différentes opérations impliquant une livraison par drone. Nous noterons respectivement ces nouveaux algorithmes 2A1 et 2A2. Ces deux algorithmes ont été présentés lors de la conférence RAMOO'2020 [3].
 
 Par ailleurs, de multiples instances ont été mises à disposition et sont compatibles avec les différents algorithmes mentionnés ci-dessus (dont un générateur interactif d'instances sur mesure)
 
@@ -104,11 +104,11 @@ Note : Il est possible de créer une instance sur mesure directement depuis l'un
 
 ## Références 
 
-[1] Niels Agatz, Paul Bouman, and Marie Schmidt,Optimizationapproaches for the traveling salesman problem with drone,Transportation Science52(2018), no. 4, 965–981.
+[1] Niels Agatz, Paul Bouman, and Marie Schmidt. Optimization approaches for the traveling salesman problem with drone, Transportation Science 52 (2018), no. 4, 965–981.
 
-[2] Stefan Poikonen, Bruce Golden, and Edward A. Wasil,Abranch-and-bound approach to the traveling salesman problem with adrone, INFORMS Journal on Computing31(2019), no. 2, 335–346.
+[2] Stefan Poikonen, Bruce Golden, and Edward A. Wasil. A branch-and-bound approach to the traveling salesman problem with a drone, INFORMS Journal on Computing 31 (2019), no. 2, 335–346.
 
-[3] Thuillier Owein, Le Colleter Théo, Gandibleux Xavier (2020, September 17). Bi-Objective Traveling Salesman Problemwith Drone (TSP-D). RAMOO’2020: 7th International Workshop on Recent Advances in Multi-Objective Optimization, Johannes Kepler University Linz, Austria. https://moo.univie.ac.at/ramoo-2020-program/
+[3] Owein Thuillier, Théo Le Colleter, Xavier Gandibleux. Bi-Objective Traveling Salesman Problem with Drone (TSP-D). RAMOO’2020: 7th International Workshop on Recent Advances in Multi-Objective Optimization. September 17, 2020. Johannes Kepler University Linz, Austria. https://moo.univie.ac.at/ramoo-2020-program/
 
 
 ## License
